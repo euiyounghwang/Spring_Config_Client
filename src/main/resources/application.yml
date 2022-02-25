@@ -1,0 +1,22 @@
+server:
+  port: 9901
+
+---
+test:
+  str: test-str
+  
+  
+spring:
+  application:
+   name: configtest-dev
+  config:
+   import: optional:configserver:http://localhost:9900
+   
+---
+# actuator (git config update auto)
+# POST : http://localhost:9901/actuator/refresh
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
